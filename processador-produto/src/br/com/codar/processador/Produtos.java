@@ -7,13 +7,18 @@ public class Produtos {
 	private int quantidade;
 	private double valor;
 	private Fornecedor fornecedor;
+	
 
-	public Produtos(int codigo, String descricaoProduto, int quantidade, double valor, Fornecedor fornecedor) {
+	public Produtos() {
+		
+	}
+	
+	public Produtos(int codigo, String descricaoProduto, int quantidade, double valor, Fornecedor codigoFornecedor) {
 		this.codigo = codigo;
 		this.descricaoProduto = descricaoProduto;
 		this.quantidade = quantidade;
 		this.valor = valor;
-		this.fornecedor = fornecedor;
+		this.fornecedor = codigoFornecedor;
 	}
 
 
@@ -76,12 +81,13 @@ public class Produtos {
 		this.fornecedor = fornecedor;
 	}
 
+	
 
 
 	@Override
 	public String toString() {
 		return "Código: " + codigo + " - Descrição: " + descricaoProduto + "- Fornecedor: "
-				+ fornecedor.getDescricaoFornecedor() + " - Valor Total: " + (valor*quantidade) + " - Sem impostos";
+				+ fornecedor.getDescricaoFornecedor() + " - Valor Total: " + valor*quantidade ;
 	}
 
 	

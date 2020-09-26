@@ -4,6 +4,12 @@ public class Fornecedor {
 	
 	private int codigo;
 	private String descricaoFornecedor;
+	
+	
+
+	public Fornecedor() {
+	
+	}
 
 	public Fornecedor(int codigo, String descricaoFornecedor) {
 		
