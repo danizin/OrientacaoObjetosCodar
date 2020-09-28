@@ -8,16 +8,18 @@ import java.util.ArrayList;
 
 public class ProcessadorProduto {
 	public static void main(String[] args) throws Exception {
+		
+		// Fornecedor
+				BufferedReader readerFornecedor = new BufferedReader(
+						new InputStreamReader(new FileInputStream("fornecedor.csv")));
+				ArrayList<Fornecedor> listaFornecedor = new ArrayList<Fornecedor>();
+				String linhaFornecedor = readerFornecedor.readLine();
 		// Produtos
 		BufferedReader readerProdutos = new BufferedReader(new InputStreamReader(new FileInputStream("produtos.csv")));
 		ArrayList<Produtos> listaProd = new ArrayList<Produtos>();
 		String linhaProdutos = readerProdutos.readLine();
 
-		// Fornecedor
-		BufferedReader readerFornecedor = new BufferedReader(
-				new InputStreamReader(new FileInputStream("fornecedor.csv")));
-		ArrayList<Fornecedor> listaFornecedor = new ArrayList<Fornecedor>();
-		String linhaFornecedor = readerFornecedor.readLine();
+		
 		
 
 		while (linhaFornecedor != null) {
@@ -92,7 +94,7 @@ public class ProcessadorProduto {
 		double codigoDouble = codigo;
 		
 		
-		maximoEMinimo(1.0, 9999.0,codigoDouble);
+		validarIntervalo(1.0, 9999.0,codigoDouble);
 		
 		// Condição para não ter códigos repetidos.
 		if (listaFornecedor.size() == 0) {
@@ -121,9 +123,9 @@ public class ProcessadorProduto {
 		double quantidadeDouble = quantidade;
 		double diasDouble = dias;
 		
-		maximoEMinimo(1.0, 9999.0, codigoDouble);
-		maximoEMinimo(1.0, 9999.0, quantidadeDouble);
-		maximoEMinimo(0.01, 9999.99, valor);
+		validarIntervalo(1.0, 9999.0, codigoDouble);
+		validarIntervalo(1.0, 9999.0, quantidadeDouble);
+		validarIntervalo(0.01, 9999.99, valor);
 		
 		// Condição para não ter códigos repetidos.
 		if(descricaoProduto.equals("")) {
@@ -135,7 +137,7 @@ public class ProcessadorProduto {
 				ProdutosNaoPereciveis prod = new ProdutosNaoPereciveis(codigoProduto, descricaoProduto, quantidade, valor, fornecedorProduto);
 				return prod;
 			}else {
-				maximoEMinimo(1.0, 999.0, dias);
+				validarIntervalo(1.0, 999.0, dias);
 				ProdutosPereciveis prodPereciveis = new ProdutosPereciveis(codigoProduto, descricaoProduto, quantidade, valor, fornecedorProduto,dias);
 				return prodPereciveis;
 			}
@@ -150,7 +152,7 @@ public class ProcessadorProduto {
 					ProdutosNaoPereciveis prod = new ProdutosNaoPereciveis(codigoProduto, descricaoProduto, quantidade, valor, fornecedorProduto);
 					return prod;
 				}else {
-					maximoEMinimo(1.0, 999.0, dias);
+					validarIntervalo(1.0, 999.0, dias);
 					ProdutosPereciveis prodPereciveis = new ProdutosPereciveis(codigoProduto, descricaoProduto, quantidade, valor, fornecedorProduto,dias);
 					return prodPereciveis;
 				}
@@ -159,9 +161,9 @@ public class ProcessadorProduto {
 			}
 		}
 	}
-	public static void maximoEMinimo(double minimo, double maximo, double valor) throws Exception {
+	public static void validarIntervalo(double minimo, double maximo, double valor) throws Exception {
 		if(valor > maximo || valor < minimo) {
-			throw new Exception("Valor não está no alcance");
+			throw new Exception("Número não está no alcance");
 		}
 		
 	}

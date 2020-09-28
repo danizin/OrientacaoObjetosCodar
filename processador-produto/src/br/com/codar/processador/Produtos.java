@@ -7,12 +7,7 @@ public class Produtos {
 	private int quantidade;
 	private double valor;
 	private Fornecedor fornecedor;
-	
 
-	public Produtos() {
-		
-	}
-	
 	public Produtos(int codigo, String descricaoProduto, int quantidade, double valor, Fornecedor codigoFornecedor) {
 		this.codigo = codigo;
 		this.descricaoProduto = descricaoProduto;
